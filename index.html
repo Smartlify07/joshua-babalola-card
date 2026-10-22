@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joshua Babalola — personal card</title>
+  <meta name="description" content="A tiny personal site: a flip-card with my details and live Spotify now-playing." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="stage">
+    <div class="card" id="card" role="button" tabindex="0" aria-pressed="false" aria-label="Profile card — activate to flip to the menu">
+      <div class="card-inner">
+
+        <!-- ================= FRONT ================= -->
+        <section class="face face-front">
+          <div class="front-top">
+            <span class="mono-label">hello, i'm</span>
+            <span class="mono-label hint">↻ flip</span>
+          </div>
+
+          <div class="front-mid">
+            <!-- ⭐ EDIT: replace assets/avatar.svg with your own square photo (keep the filename) -->
+            <img class="avatar" src="assets/avatar.svg" alt="My avatar" width="86" height="86" />
+            <!-- ⭐ EDIT: your name -->
+            <h1 class="name">Joshua Babalola</h1>
+            <!-- ⭐ EDIT: your matriculation number -->
+            <span class="matric-chip">matric no. · L/CBA/CSC/23/0030</span>
+            <!-- ⭐ EDIT: your current subject -->
+            <p class="note-label mono-label">now studying</p>
+            <p class="note"><em>data analytics</em> — ask me about numbers, chess traps, or Barça.</p>
+          </div>
+
+          <a class="np" id="np" href="#" aria-live="polite">
+            <div class="disc"><span class="disc-art" id="np-art"></span><span class="disc-shine"></span></div>
+            <div class="np-meta">
+              <span class="np-status" id="np-status">spotify</span>
+              <span class="np-track" id="np-track">Not connected</span>
+              <span class="np-artist" id="np-artist">tap to connect →</span>
+            </div>
+          </a>
+        </section>
+
+        <!-- ================= BACK ================= -->
+        <section class="face face-back" aria-hidden="true">
+          <div class="back-menu" id="back-menu">
+            <h2 class="back-title">What do you<br />want to&nbsp;see?</h2>
+
+            <nav class="options" aria-label="Card menu">
+              <button class="option" data-panel="about" type="button">
+                <span class="opt-idx">a.</span><span class="opt-label">About Me</span><span class="opt-arrow">→</span>
+              </button>
+              <button class="option" data-panel="note" type="button">
+                <span class="opt-idx">b.</span><span class="opt-label">Last Note I Wrote</span><span class="opt-arrow">→</span>
+              </button>
+              <button class="option" data-panel="portfolio" type="button">
+                <span class="opt-idx">c.</span><span class="opt-label">Portfolio</span><span class="opt-arrow">→</span>
+              </button>
+            </nav>
+
+            <span class="hint mono-label">↻ flip back</span>
+          </div>
+
+          <div class="back-panel" id="panel-about" hidden>
+            <button class="back-btn" type="button" data-action="menu">← menu</button>
+            <h3 class="panel-title">About Me</h3>
+            <!-- ⭐ EDIT: your bio -->
+            <p>I'm into data analytics — turning messy tables into clear stories and honest numbers. Still a newbie at chess (walking into every fork on the board, one game at a time), and a loud, loyal FC Barcelona supporter.</p>
+            <ul class="about-facts">
+              <li>focus · data analytics</li>
+              <li>learning · chess — certified newbie</li>
+              <li>backs · barça till the end</li>
+            </ul>
+          </div>
+
+          <div class="back-panel" id="panel-note" hidden>
+            <button class="back-btn" type="button" data-action="menu">← menu</button>
+            <h3 class="panel-title">Last Note I Wrote</h3>
+            <button class="sticky-note nb-teaser" id="note-teaser" type="button"
+              aria-haspopup="dialog" aria-controls="nb" aria-expanded="false">
+              <span class="tape" aria-hidden="true"></span>
+              <span class="quote-txt">"html lays the <em>bones</em>, css dresses them up, and php makes the page <em>walk</em> — from my entry on the three core technologies…"
+              </span>
+              <span class="open-hint" aria-hidden="true">
+                <svg class="pen" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M3 17.2V21h3.8L18 9.8l-3.8-3.8L3 17.2zM20.7 7.1c.4-.4.4-1 0-1.4l-2.4-2.4a1 1 0 0 0-1.4 0l-1.8 1.8L19 8.9l1.7-1.8z"/></svg>
+                open the notebook
+              </span>
+            </button>
+          </div>
+
+          <div class="back-panel" id="panel-portfolio" hidden>
+            <button class="back-btn" type="button" data-action="menu">← menu</button>
+            <h3 class="panel-title">Portfolio</h3>
+            <!-- ⭐ EDIT: your links -->
+            <ul class="links">
+              <li><a href="https://github.com/your-handle" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a></li>
+              <li><a href="#">Résumé · pdf <span>↗</span></a></li>
+              <li><a href="#">Playlist-art generator <span>↗</span></a></li>
+            </ul>
+            <p class="links-note">more on request</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- ═══════════ NOTEBOOK DIALOG (opened from panel b) ═══════════ -->
+    <div class="nb-backdrop" id="nb" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="nb-title">
+      <div class="nb-book">
+        <header class="nb-toolbar">
+          <span class="nb-save" id="nb-save" aria-live="polite">note loaded · auto-save on</span>
+          <div class="nb-tools">
+            <button class="nb-btn" id="nb-restore" type="button" title="Restore the original note">↺ original</button>
+            <button class="nb-btn" id="nb-edit" type="button" title="Write in the notebook">✎ write</button>
+            <button class="nb-btn nb-btn-close" id="nb-close" type="button" title="Close the notebook (Esc)">✕</button>
+          </div>
+        </header>
+
+        <div class="nb-page" id="nb-page" tabindex="-1">
+          <div class="nb-head">
+            <h2 class="nb-title" id="nb-title">The Three Core Technologies of Web&nbsp;Development</h2>
+            <span class="nb-sparks" aria-hidden="true">
+              <svg class="spark s1" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+              <svg class="spark s2" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+              <svg class="spark s3" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+            </span>
+            <p class="nb-meta mono-label">scribed · 22 oct 2026 · <span id="nb-count">— words</span></p>
+          </div>
+
+          <div class="nb-body" id="nb-body" spellcheck="false">
+            <p>sometimes the internet feels like magic, but every page you have ever opened runs on three plain, wonderful ideas. writing this down so it sticks: the <strong>skeleton</strong>, the <strong>wardrobe</strong>, and the <strong>muscle</strong> that quietly throws the whole thing together before anyone even looks.</p>
+
+            <section class="nb-sec">
+              <h3 class="nb-h"><span class="nb-num">1.</span> HTML — the skeleton</h3>
+              <span class="nb-margin" aria-hidden="true">← bones!</span>
+              <p><strong>HTML is what the page <em>is</em> — pure structure.</strong> Angle brackets are honest little tags: heading, paragraph, list, image, form, link. No styling, no drama, no lies. The real craft is <em>semantics</em>: use <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code> and <code>&lt;article&gt;</code> where they belong and browsers, search engines and screen readers all read your document as a document. HTML carries <em>meaning</em>, not looks.</p>
+            </section>
+
+            <section class="nb-sec">
+              <h3 class="nb-h"><span class="nb-num">2.</span> CSS — the wardrobe</h3>
+              <span class="nb-margin" aria-hidden="true">← outfit</span>
+              <p><strong>Cascading Style Sheets decides what everything <em>looks like</em>.</strong> HTML says what a thing is; CSS says how it's dressed — colour, spacing, fonts, layout (flex and grid instead of ancient table hacks), animation, and how it reflows on every screen size. The <em>cascade</em> is why it's clever: rules pour down from broad to specific, so one stylesheet can restyle a thousand pages in a single edit.</p>
+            </section>
+
+            <section class="nb-sec">
+              <h3 class="nb-h"><span class="nb-num">3.</span> PHP — the muscle</h3>
+              <span class="nb-margin" aria-hidden="true">← server-side!</span>
+              <p><strong>PHP works before the browser sees anything.</strong> It runs on the web server, assembles the HTML on the way out, reads databases, handles forms, logs people in and personalises pages. Whenever two visitors get different results from the same phone call, PHP is quietly flexing.</p>
+              <pre class="nb-code no-split" aria-label="PHP example"><code>&lt;?php echo "Hello, " . htmlspecialchars($name); ?&gt;</code></pre>
+            </section>
+
+            <section class="nb-sec">
+              <h3 class="nb-h"><span class="nb-num">✦</span> the handshake</h3>
+              <p>picture a visit to any site: the browser asks for a page → the server runs the PHP → PHP prints HTML (pointing at a CSS file) → the browser draws the structure → smooths on the wardrobe. <strong>structure first, style second, brain behind the scenes.</strong> three plain files, one very organised conversation.</p>
+            </section>
+
+            <p class="nb-ps"><em>PS: JavaScript earned its own notebook — that page is still being written. stay curious.</em></p>
+            <p class="nb-sign">— <strong>J.B.</strong></p>
+          </div>
+
+          <span class="nb-shimmer" aria-hidden="true"></span>
+          <svg class="nb-pencil" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M3 17.2V21h3.8L18 9.8l-3.8-3.8L3 17.2zM20.7 7.1c.4-.4.4-1 0-1.4l-2.4-2.4a1 1 0 0 0-1.4 0l-1.8 1.8L19 8.9l1.7-1.8z"/></svg>
+          <p class="nb-hint mono-label">✎ press <kbd>write</kbd> to ink your own words — they live in this browser</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="credit">html · css · vanilla js — now playing via spotify web api</p>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="spotify.js"></script>
+  <script src="script.js"></script>
+  <script src="notebook.js"></script>
+</body>
+</html>
